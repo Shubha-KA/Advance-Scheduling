@@ -4,23 +4,6 @@ metadata:
   name: flower-deploy
   namespace: flower-ns
 spec:
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: training
-            operator: In 
-            values: 
-            - devops
-      preferredDuringSchedulingIgnoredDuringExecution:
-      - weight: 1
-        preference:
-        - matchExpressions:
-          - key: training
-            operator: In
-            values:
-            - devops
   replicas: 2
   strategy:
     type: RollingUpdate
@@ -35,6 +18,23 @@ spec:
       labels:
         app: flower-app
     spec: 
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: training
+                operator: In 
+                values: 
+                - devops
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 1
+          preference:
+          - matchExpressions:
+            - key: training
+              operator: In
+              values:
+              - devops
       containers: 
         - name: flower-cont
           image: shubha20/flower-web-app:v2.1.0
