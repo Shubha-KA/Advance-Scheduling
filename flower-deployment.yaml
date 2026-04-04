@@ -27,14 +27,14 @@ spec:
                 operator: In 
                 values: 
                 - devops
-        preferredDuringSchedulingIgnoredDuringExecution:
-        - weight: 1
-          preference:
-          - matchExpressions:
-            - key: training
-              operator: In
-              values:
-              - devops
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1
+            preference:
+            - matchExpressions:
+              - key: training
+                operator: In
+                values:
+                - devops
       containers: 
         - name: flower-cont
           image: shubha20/flower-web-app:v2.1.0
