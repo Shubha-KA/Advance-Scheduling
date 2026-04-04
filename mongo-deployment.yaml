@@ -29,16 +29,16 @@ spec:
                 - devops
             topologyKey: kubernetes.io/hostname
           
-          podAntiAffinity:
-            requiredDuringSchedulingIgnoredDuringExecution:
-            - labelSelector:
-                matchExpressions:
-                - key: training
-                  operator: In
-                  values:
-                  - devops
-              topologyKey: kubernetes.io/hostname
-              
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: training
+                operator: In
+                values:
+                - devops
+            topologyKey: kubernetes.io/hostname
+
       containers:
         - name: mongodb-cont
           image: mongo:8.0
