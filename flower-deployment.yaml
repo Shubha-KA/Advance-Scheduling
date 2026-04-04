@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata: 
   name: flower-deploy
-  #namespace: flower-ns
+  namespace: flower-ns
 spec:
   replicas: 2
   strategy:
