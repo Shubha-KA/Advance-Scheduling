@@ -22,11 +22,11 @@ spec:
         podAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
           - labelSelector:
-            matchExpressions:
-            - key: training
-              operator: In
-              values:
-              - devops
+              matchExpressions:
+              - key: training
+                operator: In
+                values:
+                - devops
       containers:
         - name: mongodb-cont
           image: mongo:8.0
