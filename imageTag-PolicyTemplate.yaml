@@ -12,18 +12,9 @@ spec:
       rego: |
         package k8srequiredimagetag
 
-        # For Pods
         violation[{"msg": msg}] {
-          containers := input.review.object.spec.containers
-          container := containers[_]
+          input.review.kind.kind == "Deployment"
+          container := input.review.object.spec.template.spec.containers[_]
           endswith(container.image, ":latest")
-          msg := "Using latest tag is not allowed"
-        }
-
-        # For Deployments
-        violation[{"msg": msg}] {
-          containers := input.review.object.spec.template.spec.containers
-          container := containers[_]
-          endswith(container.image, ":latest")
-          msg := "Using latest tag is not allowed"
+          msg := "Using latest tag is not allowed in Deployment"
         }
