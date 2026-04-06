@@ -18,23 +18,28 @@ spec:
       labels:
         app: flower-app
     spec: 
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: training
-                operator: In 
-                values: 
-                - devops
-          preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 1
-            preference:
-              matchExpressions:
-              - key: training
-                operator: In
-                values:
-                - devops
+      # affinity:
+      #   nodeAffinity:
+      #     requiredDuringSchedulingIgnoredDuringExecution:
+      #       nodeSelectorTerms:
+      #       - matchExpressions:
+      #         - key: training
+      #           operator: In 
+      #           values: 
+      #           - devops
+      #     preferredDuringSchedulingIgnoredDuringExecution:
+      #     - weight: 1
+      #       preference:
+      #         matchExpressions:
+      #         - key: training
+      #           operator: In
+      #           values:
+      #           - devops
+      tolerations:
+      - key: env
+        operator: Equal
+        value: prod 
+        effect: NoSchedule
       containers: 
         - name: flower-cont
           image: shubha20/flower-web-app:v2.1.0
