@@ -19,7 +19,7 @@ spec:
         app: flower-app
     spec: 
       affinity:
-        # nodeAffinity:
+        nodeAffinity:
         #   requiredDuringSchedulingIgnoredDuringExecution:
         #     nodeSelectorTerms:
         #     - matchExpressions:
@@ -27,14 +27,14 @@ spec:
         #         operator: In 
         #         values: 
         #         - devops
-        preferredDuringSchedulingIgnoredDuringExecution:
-        - weight: 1
-          preference:
-            matchExpressions:
-            - key: training
-              operator: In
-              values:
-              - devops
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1
+            preference:
+              matchExpressions:
+              - key: training
+                operator: In
+                values:
+                - devops
       tolerations:
       - key: env
         operator: Equal
