@@ -1,10 +1,11 @@
 apiVersion: constraints.gatekeeper.sh/v1beta1
-kind: K8sDeploymentImageTag
+kind: K8sBlockLatest
 metadata:
-  name: disallow-latest-tag-deployment
+  name: block-latest
 spec:
-  enforcementAction: deny
+  enforcementAction: deny  
   match:
+    # namespaces: ["flower-ns"]
     kinds:
-      - apiGroups: ["apps"]
-        kinds: ["Deployment"]
+      - apiGroups: [""]
+        kinds: ["Pod"]
