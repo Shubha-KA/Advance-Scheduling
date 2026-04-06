@@ -18,23 +18,23 @@ spec:
       labels:
         app: flower-app
     spec: 
-      affinity:
-        nodeAffinity:
-        #   requiredDuringSchedulingIgnoredDuringExecution:
-        #     nodeSelectorTerms:
-        #     - matchExpressions:
-        #       - key: training
-        #         operator: In 
-        #         values: 
-        #         - devops
-          # preferredDuringSchedulingIgnoredDuringExecution:
-          # - weight: 1
-          #   preference:
-          #     matchExpressions:
-          #     - key: training
-          #       operator: In
-          #       values:
-          #       - devops
+      # affinity:
+      #   nodeAffinity:
+      #     requiredDuringSchedulingIgnoredDuringExecution:
+      #       nodeSelectorTerms:
+      #       - matchExpressions:
+      #         - key: training
+      #           operator: In 
+      #           values: 
+      #           - devops
+      #     preferredDuringSchedulingIgnoredDuringExecution:
+      #     - weight: 1
+      #       preference:
+      #         matchExpressions:
+      #         - key: training
+      #           operator: In
+      #           values:
+      #           - devops
       # tolerations:
       # - key: env
       #   operator: Equal
@@ -42,17 +42,17 @@ spec:
       #   effect: NoSchedule
       containers: 
         - name: flower-cont
-          image: shubha20/flower-web-app:latest
+          image: shubha20/flower-web-app:v2.1.0
           ports:
             - containerPort: 3015
 
-          # resources:
-          #   requests:
-          #     cpu: "100m"
-          #     memory: "128Mi"
-          #   limits:
-          #     cpu: "200m"
-          #     memory: "256Mi"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "200m"
+              memory: "256Mi"
       
       # nodeSelector:
       #   training: devops
