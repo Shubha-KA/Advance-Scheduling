@@ -4,7 +4,7 @@ metadata:
   name: flower-deploy
   namespace: flower-ns
 spec:
-  replicas: 4
+  replicas: 2
   strategy:
     type: RollingUpdate
     rollingUpdate:
