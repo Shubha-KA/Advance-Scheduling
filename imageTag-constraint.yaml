@@ -3,8 +3,12 @@ kind: K8sBlockLatest
 metadata:
   name: block-latest
 spec:
-  enforcementAction: deny  
+  enforcementAction: warn 
   match:
     kinds:
       - apiGroups: [""]
         kinds: ["Pod"]
+  parameters:
+    repos:
+      - "openpolicyagent"
+
