@@ -1,20 +1,24 @@
 apiVersion: templates.gatekeeper.sh/v1beta1
 kind: ConstraintTemplate
 metadata:
-  name: k8srequiredimagetag
+  name: k8sdeploymentimagetag
 spec:
   crd:
     spec:
       names:
-        kind: K8sRequiredImageTag
+        kind: K8sDeploymentImageTag
   targets:
     - target: admission.k8s.gatekeeper.sh
       rego: |
-        package k8srequiredimagetag
+        package k8sdeploymentimagetag
 
         violation[{"msg": msg}] {
           input.review.kind.kind == "Deployment"
-          container := input.review.object.spec.template.spec.containers[_]
+
+          containers := input.review.object.spec.template.spec.containers
+          container := containers[_]
+
           endswith(container.image, ":latest")
-          msg := "Using latest tag is not allowed in Deployment"
+
+          msg := sprintf("Deployment '%s' uses forbidden image tag ':latest'", [input.review.object.metadata.name])
         }
