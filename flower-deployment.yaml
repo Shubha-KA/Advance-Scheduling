@@ -4,7 +4,7 @@ metadata:
   name: flower-deploy
   namespace: flower-ns
 spec:
-  replicas: 4
+  replicas: 2
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -42,7 +42,7 @@ spec:
         effect: NoSchedule
       containers: 
         - name: flower-cont
-          image: shubha20/flower-web-app:v2.1.0
+          image: shubha20/flower-web-app:latest
           ports:
             - containerPort: 3015
 
