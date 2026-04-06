@@ -1,14 +1,9 @@
 apiVersion: constraints.gatekeeper.sh/v1beta1
-kind: K8sBlockLatest
+kind: K8sLatestImages
 metadata:
-  name: block-latest
+  name: latest-image-limits
 spec:
-  enforcementAction: warn 
   match:
     kinds:
       - apiGroups: [""]
         kinds: ["Pod"]
-  parameters:
-    repos:
-      - "openpolicyagent"
-
