@@ -27,19 +27,19 @@ spec:
         #         operator: In 
         #         values: 
         #         - devops
-          preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 1
-            preference:
-              matchExpressions:
-              - key: training
-                operator: In
-                values:
-                - devops
-      tolerations:
-      - key: env
-        operator: Equal
-        value: prod 
-        effect: NoSchedule
+          # preferredDuringSchedulingIgnoredDuringExecution:
+          # - weight: 1
+          #   preference:
+          #     matchExpressions:
+          #     - key: training
+          #       operator: In
+          #       values:
+          #       - devops
+      # tolerations:
+      # - key: env
+      #   operator: Equal
+      #   value: prod 
+      #   effect: NoSchedule
       containers: 
         - name: flower-cont
           image: shubha20/flower-web-app:latest
